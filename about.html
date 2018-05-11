@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Policom. Data Visualisation</title>
+      <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+      <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Poppins:400,700'>
+      <link rel="stylesheet" href="css/style.css">
+      <script src="js/snap.svg-min.js"></script>
+      <link rel="shortcut icon" href="img/rsicon.ico" type="image/x-icon">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<header>
+   <a id="logo" href="#">Policom.</a>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" id="current">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="twitter.com/mrrobsimpson" id="twitter">Twitter</a></li>
+    </ul>
+  </nav>
+</header>
+<body>
+  <div class="dashboard display-animation" style="margin: 0 auto; width: 1130px;">
+  <a class="tile tile-lg tile-red ripple-effect" href="specific.html">
+    <span class="content-wrapper">
+      <span class="tile-content">
+        <span class="tile-img" background-image= "url(https://blog.spoongraphics.co.uk/wp-content/uploads/2018/grimeart/5.jpg);"></span>
+        <span class="tile-holder tile-holder-sm">
+          <span class="title">Syria Conflict: The Numbers</span>
+        </span>
+      </span>
+    </span>
+  </a>
+  <a class="tile tile-lg tile-sqr tile-red ripple-effect" href="nhs.html">
+    <span class="content-wrapper">
+      <span class="tile-content">
+        <span class="tile-img" style="background-image: url(https://www.google.com/design/images/materialreel.png);"></span>
+        <span class="tile-holder tile-holder-sm">
+          <span class="title">NHS <span class="caption">Coming Soon</span></span>
+        </span>
+      </span>
+    </span>
+  </a>
+  <a class="tile tile-lg tile-sqr tile-red ripple-effect" href="#">
+    <span class="content-wrapper">
+      <span class="tile-content">
+        <span class="tile-img" style="background-image: url(https://www.google.com/design/images/principles.png);"></span>
+        <span class="tile-holder tile-holder-sm">
+          <span class="title">Unemployment Rates <span class="caption">Coming Soon</span></span>
+        </span>
+      </span>
+    </span>
+  </a>
+<div class="container">
+  <div class="author">
+      <a href="https://twitter.com/mrrobsimpson" class="name">
+        <img src="https://pbs.twimg.com/profile_images/920782337671081986/y1tb7802_bigger.jpg" class="circle" /><br/>
+        @MrRobSimpson
+      </a>
+      <p>Designer @eyekiller | Studying Interaction Design in Belfast | #ixdbelfast</p>
+      <strong>Creator of Policom.</strong>
+    </div>
+  <section class="card">
+
+      <h2>About Policom.</h2>
+      <p>Policom is an online platform which displays
+news in a new visual way. Using data
+visualisation, I aim to show people news in a
+way which will help them fully understand what
+is going on. </p>
+
+<p>The motive behind this major project
+concept was mainly because I feel that a lot of
+young people in particular feel disengaged with
+the political landscape and to a lesser extent
+even current events.</p>
+
+<p>I have an interest in politics so it is good that I can
+design around a subject that I feel passionate
+about as I feel it is important to take an interest in
+what is going on around you, I fear other people
+within a similar age group to me don’t have that
+same political awareness. </p>
+
+<p>Put simply, Policom is an idea. The idea being, visualising today’s news and politics in art format to make it easier to digest. I’ve created some art pieces which display various statistics and information from around the world</p>
+
+
+
+  </section>
+</div>
+</body>
+<footer>
+  <div class="copy"><p>&copy;Policom. 2018</p></div>
+  <div class="social">
+    <a href="contact.html" class="support">Contact Us</a>
+    <a href="www.facebook.com" class="face">f</a>
+    <a href="www.twitter.com/mrrobsimpson." class="tweet">t</a>
+    <a href="www.linkedin.com" class="linked">in</a>
+  </div>
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script>
+
+(function($) {
+    var speed = 2000;
+    var container =  $('.display-animation');
+    container.each(function() {
+        var elements = $(this).children();
+        elements.each(function() {
+            var elementOffset = $(this).offset();
+            var offset = elementOffset.left*0.8 + elementOffset.top;
+            var delay = parseFloat(offset/speed).toFixed(2);
+            $(this)
+                .css("-webkit-animation-delay", delay+'s')
+                .css("-o-animation-delay", delay+'s')
+                .css("animation-delay", delay+'s')
+                .addClass('animated');
+        });
+    });
+})(jQuery);
+
+
+
+(function($) {
+    $(".ripple-effect").click(function(e){
+        var rippler = $(this);
+
+        // create .ink element if it doesn't exist
+        if(rippler.find(".ink").length == 0) {
+            rippler.append("<span class='ink'></span>");
+        }
+
+        var ink = rippler.find(".ink");
+
+        // prevent quick double clicks
+        ink.removeClass("animate");
+
+        // set .ink diametr
+        if(!ink.height() && !ink.width())
+        {
+            var d = Math.max(rippler.outerWidth(), rippler.outerHeight());
+            ink.css({height: d, width: d});
+        }
+
+        // get click coordinates
+        var x = e.pageX - rippler.offset().left - ink.width()/2;
+        var y = e.pageY - rippler.offset().top - ink.height()/2;
+
+        // set .ink position and add class .animate
+        ink.css({
+            top: y+'px',
+            left:x+'px'
+        }).addClass("animate");
+    })
+})(jQuery);</script>
+
+</html>

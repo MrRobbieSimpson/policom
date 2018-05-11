@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+<script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Policom. Data Visualisation</title>
+      <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+      <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Poppins:400,700'>
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+      <script src="js/snap.svg-min.js"></script>
+      <link rel="shortcut icon" href="img/rsicon.ico" type="image/x-icon">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<header>
+   <a id="logo" href="#">Policom.</a>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" id="current">Contact</a></li>
+      <li><a href="twitter.com/mrrobsimpson" id="twitter">Twitter</a></li>
+    </ul>
+  </nav>
+</header>
+<body>
+  <div class="container">
+
+    <section class="card">
+
+        <h2>Contact Policom.</h2>
+        <p>If you'd like to get in touch, have your say or would like Policom. to cover a certain news story, get in touch using the form below.</p>
+        <form id="form" class="topBefore">
+
+        		  <input id="name" type="text" placeholder="NAME">
+        		  <input id="email" type="text" placeholder="E-MAIL">
+        		  <textarea id="message" type="text" placeholder="MESSAGE"></textarea>
+          <input id="submit" type="submit" value="GO!">
+
+        </form>
+
+</section>
+
+  <section class="card">
+    <a class="twitter-timeline" data-tweet-limit="3"   data-width="820"
+data-height="200" href="https://twitter.com/MrRobSimpson?ref_src=twsrc%5Etfw">Tweets by MrRobSimpson</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+  </section>
+
+
+</body>
+<footer>
+  <div class="copy"><p>&copy;Policom. 2018</p></div>
+  <div class="social">
+    <a href="contact.html" class="support">Contact Us</a>
+    <a href="www.facebook.com" class="face">f</a>
+    <a href="www.twitter.com/mrrobsimpson." class="tweet">t</a>
+    <a href="www.linkedin.com" class="linked">in</a>
+  </div>
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script>
+
+(function($) {
+    var speed = 2000;
+    var container =  $('.display-animation');
+    container.each(function() {
+        var elements = $(this).children();
+        elements.each(function() {
+            var elementOffset = $(this).offset();
+            var offset = elementOffset.left*0.8 + elementOffset.top;
+            var delay = parseFloat(offset/speed).toFixed(2);
+            $(this)
+                .css("-webkit-animation-delay", delay+'s')
+                .css("-o-animation-delay", delay+'s')
+                .css("animation-delay", delay+'s')
+                .addClass('animated');
+        });
+    });
+})(jQuery);
+
+
+
+(function($) {
+    $(".ripple-effect").click(function(e){
+        var rippler = $(this);
+
+        // create .ink element if it doesn't exist
+        if(rippler.find(".ink").length == 0) {
+            rippler.append("<span class='ink'></span>");
+        }
+
+        var ink = rippler.find(".ink");
+
+        // prevent quick double clicks
+        ink.removeClass("animate");
+
+        // set .ink diametr
+        if(!ink.height() && !ink.width())
+        {
+            var d = Math.max(rippler.outerWidth(), rippler.outerHeight());
+            ink.css({height: d, width: d});
+        }
+
+        // get click coordinates
+        var x = e.pageX - rippler.offset().left - ink.width()/2;
+        var y = e.pageY - rippler.offset().top - ink.height()/2;
+
+        // set .ink position and add class .animate
+        ink.css({
+            top: y+'px',
+            left:x+'px'
+        }).addClass("animate");
+    })
+})(jQuery);
+
+$(document).ready(function() {
+	// Test for placeholder support
+    $.support.placeholder = (function(){
+        var i = document.createElement('input');
+        return 'placeholder' in i;
+    })();
+
+    // Hide labels by default if placeholders are supported
+    if($.support.placeholder) {
+        $('.form-label').each(function(){
+            $(this).addClass('js-hide-label');
+        });
+
+        // Code for adding/removing classes here
+        $('.form-group').find('input, textarea').on('keyup blur focus', function(e){
+
+            // Cache our selectors
+            var $this = $(this),
+                $parent = $this.parent().find("label");
+
+						switch(e.type) {
+							case 'keyup': {
+								 $parent.toggleClass('js-hide-label', $this.val() == '');
+							} break;
+							case 'blur': {
+								if( $this.val() == '' ) {
+                    $parent.addClass('js-hide-label');
+                } else {
+                    $parent.removeClass('js-hide-label').addClass('js-unhighlight-label');
+                }
+							} break;
+							case 'focus': {
+								if( $this.val() !== '' ) {
+                    $parent.removeClass('js-unhighlight-label');
+                }
+							} break;
+							default: break;
+						}
+						// previous implementation with ifs
+            /*if (e.type == 'keyup') {
+                if( $this.val() == '' ) {
+                    $parent.addClass('js-hide-label');
+                } else {
+                    $parent.removeClass('js-hide-label');
+                }
+            }
+            else if (e.type == 'blur') {
+                if( $this.val() == '' ) {
+                    $parent.addClass('js-hide-label');
+                }
+                else {
+                    $parent.removeClass('js-hide-label').addClass('js-unhighlight-label');
+                }
+            }
+            else if (e.type == 'focus') {
+                if( $this.val() !== '' ) {
+                    $parent.removeClass('js-unhighlight-label');
+                }
+            }*/
+        });
+    }
+});
+
+</script>
+
+
+
+
+
+</html>
