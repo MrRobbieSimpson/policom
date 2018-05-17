@@ -11,9 +11,8 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
       <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
       <link rel="stylesheet" href="css/style.css">
-
       <script src="js/snap.svg-min.js"></script>
-      <link rel="shortcut icon" href="img/rsicon.ico" type="image/x-icon">
+            <link rel="shortcut icon" href="img/poli-con.ico" type="image/x-icon">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <header>
@@ -84,7 +83,7 @@ var chart = new Chartist.Line('.ct-chart', {
   low: 0
 });
 
-// Let's put a sequence number aside so we can use it in the event callbacks
+
 var seq = 0,
   delays = 80,
   durations = 500;
@@ -94,7 +93,7 @@ chart.on('created', function() {
   seq = 0;
 });
 
-// On each drawn element by Chartist we use the Chartist.Svg API to trigger SMIL animations
+//SMIL animations
 chart.on('draw', function(data) {
   seq++;
 
@@ -119,7 +118,7 @@ chart.on('draw', function(data) {
         dur: durations,
         from: data.y + 100,
         to: data.y,
-        // We can specify an easing function from Chartist.Svg.Easing
+
         easing: 'easeOutQuart'
       }
     });
@@ -158,7 +157,7 @@ chart.on('draw', function(data) {
       }
     });
   } else if(data.type === 'grid') {
-    // Using data.axis we get x or y which we can use to construct our animation definition objects
+
     var pos1Animation = {
       begin: seq * delays,
       dur: durations,
@@ -192,7 +191,7 @@ chart.on('draw', function(data) {
 
 
 
-// For the sake of the example we update the chart every time it's created with a delay of 10 seconds
+
 chart.on('created', function() {
   if(window.__exampleAnimateTimeout) {
     clearTimeout(window.__exampleAnimateTimeout);
