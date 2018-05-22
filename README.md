@@ -5,6 +5,6 @@ Policom's supporting material can be found - https://drive.google.com/drive/fold
 Early Prototype - https://invis.io/8BFB4WRKH  
 2018 Portfolio - www.rob-simpson.co.uk  
 
-  Updated Policom site (v2.0) will be uploaded to - www.projectpoli.com
+  ## Updated Policom site (v2.0) will be uploaded to - www.projectpoli.com
 
 ### Watch this space
